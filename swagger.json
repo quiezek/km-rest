@@ -1,0 +1,83 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Employee List",
+    "version": "1.0.0"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "basePath": "/",
+  "paths": {
+    "/employees": {
+      "get": {
+        "parameters": [
+          {
+            "name": "department",
+            "in": "query",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "summary": "Get all employees",
+        "description": "Retrieves the list of employees",
+        "responses": {
+          "200": {
+            "description": "The list of employees",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Employee"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/employees/{id}": {
+      "get": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "summary": "Get single employee",
+        "description": "Get employee by id",
+        "responses": {
+          "200": {
+            "description": "Single employee",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Employee": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "department": {
+          "type": "string"
+        },
+        "dob": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
